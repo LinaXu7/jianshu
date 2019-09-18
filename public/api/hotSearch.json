@@ -1,0 +1,24 @@
+{
+  "data": [{
+    "id": 1,
+    "hotName": "热点"
+  }, {
+    "id": 2,
+    "hotName": "蚂蚁金服"
+  }, {
+    "id": 3,
+    "hotName": "支付宝"
+  }, {
+    "id": 4,
+    "hotName": "高考"
+  }, {
+    "id": 5,
+    "hotName": "借呗"
+  }, {
+    "id": 6,
+    "hotName": "高尔夫"
+  }, {
+    "id": 7,
+    "hotName": "教师节"
+  }]
+}

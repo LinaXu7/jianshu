@@ -1,5 +1,13 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-06 10:48:48
+ * @LastEditTime: 2019-09-02 17:19:43
+ * @LastEditors: Please set LastEditors
+ */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actionCreators from '../../store/actionCreators';
 import axios from 'axios';
 import Topic from './componets/Topic';
 import List from './componets/List';
@@ -8,10 +16,16 @@ import Writer from './componets/Writer';
 import { 
   HomeWrapper,
   HomeLeft,
-  HomeRight
+  HomeRight,
+  BackToTop
 } from './style';
 
 class Home extends Component {
+
+  handleBackTop() {
+    window.scrollTo(0, 0);
+  }
+
   render() {
     return (
       <HomeWrapper>
@@ -24,29 +38,39 @@ class Home extends Component {
           <Recommd />
           <Writer />
         </HomeRight>
+        {this.props.showScroll ? <BackToTop onClick={this.handleBackTop}>回到顶部</BackToTop> : null}
       </HomeWrapper>
     )
 	}
 	
 	componentDidMount() {
-		this.props.changeHomeData();
-	}
+    this.props.changeHomeData();
+    this.bindEvents();
+  }
+  
+  bindEvents() {
+    window.addEventListener('scroll', this.props.changeScrollTopShow);
+  }
 }
+
+const mapState = (state) => ({
+  showScroll: state.home.get('showScroll')
+});
 
 const mapDispatch = (dispatch) => ({
 	changeHomeData() {
 		axios.get('/api/home.json').then((res) => {
 			const result = res.data;
-			const action = {
-					type: 'change_home_data',
-					topicList: result.topicList,
-					articleList: result.articleList,
-					recommendList: result.recommendList,
-					writerList: result.writerList
-			}
-			dispatch(action);
+			dispatch(actionCreators.changeHomeData(result.topicList, result.articleList, result.recommendList, result.writerList));
 		})
-	}
+  },
+  changeScrollTopShow() {
+    if(document.documentElement.scrollTop > 100 ) {
+      dispatch(actionCreators.goBackTop(true));
+    } else {
+      dispatch(actionCreators.goBackTop(false));
+    }
+  }
 });
 
-export default connect(null, mapDispatch)(Home);
+export default connect(mapState, mapDispatch)(Home);

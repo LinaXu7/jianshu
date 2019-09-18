@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-06 11:14:08
+ * @LastEditTime: 2019-09-02 17:20:08
+ * @LastEditors: Please set LastEditors
+ */
 import React, { Component } from 'react';
 import { WriterWrapper, WriterItem, WriterInfo } from '../style';
 import { connect } from 'react-redux';

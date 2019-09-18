@@ -1,0 +1,33 @@
+{
+  "list": [{
+    "id": 1,
+    "title": "React入门笔记",
+    "content": "一、环境搭建在终端安装react：npm in...",
+    "info": "# **一、环境搭建** 在终端安装react：`npm install -g create-react-app`"
+  }, {
+    "id": 2,
+    "title": "使用Charles实现本地数据mock",
+    "content": "Tools > Map local 配置![image.png]...",
+    "info": "# **一、环境搭建** 在终端安装react：`npm install -g create-react-app`"
+  }, {
+    "id": 3,
+    "title": "Redux 去改变store中的数据",
+    "content": "一、创建store index.jsimport { createStore...",
+    "info": "# **一、环境搭建** 在终端安装react：`npm install -g create-react-app`"
+  }, {
+    "id": 4,
+    "title": "actionCreators统一创建action",
+    "content": "一、在store下新建actionCreators.js...",
+    "info": "# **一、环境搭建** 在终端安装react：`npm install -g create-react-app`"
+  }, {
+    "id": 5,
+    "title": "action使用actionTypes",
+    "content": "使用actionTypes，防止在编码时书写错...",
+    "info": "# **一、环境搭建** 在终端安装react：`npm install -g create-react-app`"
+  }, {
+    "id": 6,
+    "title": "关于React使用iconfont显示为",
+    "content": "在引入iconfont图标的时候，图标一直显...",
+    "info": "# **一、环境搭建** 在终端安装react：`npm install -g create-react-app`"
+  }]
+}

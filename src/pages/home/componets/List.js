@@ -1,39 +1,54 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-08-06 11:13:58
+ * @LastEditTime: 2019-09-02 17:20:28
+ * @LastEditors: Please set LastEditors
+ */
 import React, { Component } from 'react';
 import { ListInfo, ListItem, LoadMore } from '../style';
 import { connect } from 'react-redux';
-import { actionCreators } from '../store';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import * as actionCreators from '../../../store/actionCreators';
 
 class List extends Component {
     render() {
-        const { list, getMoreList } = this.props;
+        const { list, page } = this.props;
         return (
             <div>
                 {
-                    list.map((item) => {
+                    list.map((item, index) => {
                         return (
-                            <ListItem key={item.get('id')}>
-                                <img className="pic" src={item.get('imgUrl')} alt=""></img>
-                                <ListInfo>
-                                    <h3 className="title">{item.get('title')}</h3>
-                                    <p className="info">{item.get('info')}</p>
-                                </ListInfo>
-                            </ListItem>
+                            <Link key={index} to={'/detail/' + item.get('id')}>
+                                <ListItem key={item.get('id')}>
+                                    <img className="pic" src={item.get('imgUrl')} alt=""></img>
+                                    <ListInfo>
+                                        <h3 className="title">{item.get('title')}</h3>
+                                        <p className="info">{item.get('info')}</p>
+                                    </ListInfo>
+                                </ListItem>
+                            </Link> 
                         );
                     })
                 }
-                <LoadMore onClick={getMoreList}>更多文字</LoadMore>
-            </div> 
+                <LoadMore onClick={() => this.props.getMoreList(page)}>更多文字</LoadMore>
+            </div>
         )
     }
 }
 
 const mapState = (state) => ({
-    list: state.home.get('articleList')
+    list: state.home.get('articleList'),
+    page: state.home.get('articlePage')
 });
 
 const mapDispatch = (dispatch) => ({
-    getMoreList() {
-        dispatch(actionCreators.getMoreList())
+    getMoreList(page) {
+        axios.get('/api/moreList.json?page=' + page).then((res) => {
+            const reslut = res.data;
+            dispatch(actionCreators.moreList(reslut.articleList, page + 1));
+        })
     }
 });
 

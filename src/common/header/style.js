@@ -1,3 +1,10 @@
+/*
+ * @Description: In User Settings Edit
+ * @Author: your name
+ * @Date: 2019-06-25 15:38:34
+ * @LastEditTime: 2019-09-12 15:43:21
+ * @LastEditors: Please set LastEditors
+ */
 import styled from 'styled-components';
 import logoPic from '../../statics/img/logo.png';
 
@@ -7,7 +14,7 @@ export const HeaderWrapper = styled.div`
     border-bottom: 1px solid #f0f0f0;
 `;
 
-export const Logo = styled.a`
+export const Logo = styled.div`
     position: absolute;
     top: 0;
     left: 0;
@@ -44,7 +51,6 @@ export const NavItem = styled.div`
 export const SearchWrapper = styled.div`
     position: relative;
     float: left;
-    
     .iconfont {
         position: absolute;
         right: 5px;
@@ -64,7 +70,7 @@ export const SearchWrapper = styled.div`
 export const NavSearch = styled.input.attrs({
     placeholder: '搜索'
 })`
-    width: 160px;
+    width: 280px;
     height: 38px;
     padding: 0 30px 0 20px;
     box-sizing: border-box;
@@ -81,20 +87,20 @@ export const NavSearch = styled.input.attrs({
         color: #999;
     }
     &.focused {
-        width: 245px;
+        width: 345px;
     }
     &.slide-enter {
-        width: 160px;
+        width: 280px;
         transition: all .2s ease-out;
     }
     &.slide-enter-active {
-        width: 240px;
+        width: 345px;
     }
     &.slide-exit {
         transition: all .2s ease-out;
     }
     &.slide-exit-active {
-        width: 160px;
+        width: 280px;
     }
 `;
 
@@ -120,5 +126,72 @@ export const Button = styled.div`
         font-size: 16px;
         color: #fff;
         background:#ec6149;
+    }
+`;
+// visibility: hidden;
+// opacity: 0;
+export const Search = styled.div`
+    width: 250px;
+    height: 190px;
+    position: absolute;
+    left: 29.5%;
+    top: 100%;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0,0,0,.2);
+    .before {
+        position: absolute;
+        left: 20px;
+        width: 30px;
+        height: 30px;
+        transform: rotate(45deg);
+        top: -5px;
+        z-index: -1;
+        box-sizing: border-box;
+        background-color: #fff;
+        box-shadow: 0 0 8px rgba(0,0,0,.2);
+    }
+`;
+
+export const SearchItem = styled.div`
+    padding: 20px 20px 10px;
+`;
+
+export const SearchInfo = styled.div`
+    line-height: 20px;
+    float: left;
+    margin-top: 5px;
+    .hot_item {
+        margin: 4px 3px;
+        display: inline-block;
+        padding: 2px 6px;
+        font-size: 12px;
+        color: #787878;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+`;
+
+export const SearchTitle = styled.div`
+    height: 20px;
+    line-height: 20px;
+    .hotSearch {
+        float: left;
+        font-size: 14px;
+        color: #969696;
+    }
+    .refresh {
+        background-color: transparent;
+        padding-right: 2px;
+    }
+    .change_hotName {
+        float: right;
+        font-size: 13px;
+        color: #969696;
+        cursor: pointer;
+    }
+    .change_hotName:hover {
+        color: #000;
     }
 `;

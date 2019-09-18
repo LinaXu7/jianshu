@@ -7,10 +7,10 @@ class Recommd extends Component {
         return (
             <RecommdWrapper>
                 {
-                this.props.list.map((item) => {
-                    return <RecommdItem imgUrl={item.get('imgUrl')} key={item.get('id')}/>
-                })
-            } 
+                    this.props.list.map((item) => {
+                        return <RecommdItem imgUrl={item.get('imgUrl')} key={item.get('id')}/>
+                    })
+                } 
             </RecommdWrapper>
         )
     }
@@ -18,6 +18,6 @@ class Recommd extends Component {
 
 const mapState = (state) => ({
     list: state.home.get('recommendList')
-})
+});
 
 export default connect(mapState, null)(Recommd);
