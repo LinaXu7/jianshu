@@ -8,7 +8,7 @@
     "id": 2,
     "title": "使用Charles实现本地数据mock",
     "content": "Tools > Map local 配置![image.png]...",
-    "info": "# **一、环境搭建** 在终端安装react：`npm install -g create-react-app`"
+    "info": "`npm install -g create-react-app`"
   }, {
     "id": 3,
     "title": "Redux 去改变store中的数据",

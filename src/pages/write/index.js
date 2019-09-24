@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-30 14:48:21
- * @LastEditTime: 2019-09-18 17:19:56
+ * @LastEditTime: 2019-09-19 17:51:30
  * @LastEditors: Please set LastEditors
  */
 import React, { Component } from 'react';
@@ -25,17 +25,15 @@ import {
 import * as actionCreators   from '../../store/actionCreators';
 import axios from 'axios';
 
-const MOCK_DATA = "Hello.\n\n * This is markdown.\n * It is fun\n * Love it or leave it."
 class Write extends Component {
 	mdParser = null
 	constructor(props) {
 		super(props);
 		this.mdParser = new MarkdownIt(/* Markdown-it options */);
-		this.handleListClick = this.handleListClick.bind(this);
 	}
 	
 	render() {
-		const { loginStatus, list } = this.props;
+		const { loginStatus, list, editContent } = this.props;
 		if(loginStatus) {
 			return (
 				<WriteWrapper>
@@ -59,7 +57,7 @@ class Write extends Component {
 							{
 								list.map((item) => {
 									return (
-										<Li className="list" key={item.get('id')} onClick={() => {this.handleListClick(item)}}>
+										<Li className="list" key={item.get('id')} onClick={() => {this.props.handleListClick(item.get('info'))}}>
 											<i className="articleIcon"></i>
 											<span className="title">{item.get('title')}</span>
 											<span className="content">{item.get('content')}</span>
@@ -71,7 +69,7 @@ class Write extends Component {
 					</WriteTitle>
 					<WriteRight>
 						<MdEditor
-							value={MOCK_DATA}
+							value={editContent}
 							renderHTML={(text) => this.mdParser.render(text)}
 							onChange={this.handleEditorChange} 
 						/>
@@ -86,22 +84,12 @@ class Write extends Component {
 	componentDidMount() {
 		this.props.ArList();
 	}
-
-	handleListClick(item) {
-		console.log(item);
-			// this.handleEditorChange(item);
-	}
-
-    // handleEditorChange(item) {
-    //     this.setState({
-
-    //     })
-    // }
 }
 
 const mapState = (state) => ({
 	loginStatus: state.login.get('login'),
-	list: state.write.get('writeList')
+	list: state.write.get('writeList'),
+	editContent: state.write.get('editContent')
 });
 
 const mapDispatch = (dispatch) => ({
@@ -110,6 +98,9 @@ const mapDispatch = (dispatch) => ({
 			const reslut = res.data.list;
 			dispatch(actionCreators.changeWriteList(reslut));
 		});
+	},
+	handleListClick(info) {
+		dispatch(actionCreators.changeEditors(info));
 	}
 });
 

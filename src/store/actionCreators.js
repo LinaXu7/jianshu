@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-28 16:43:08
- * @LastEditTime: 2019-09-03 11:51:37
+ * @LastEditTime: 2019-09-19 09:49:22
  * @LastEditors: Please set LastEditors
  */
 import * as constants from './constants';
@@ -65,6 +65,12 @@ export const changeWriteList = (list) => ({
     list: fromJS(list)
 });
 
+//更改编辑器的内容
+export const changeEditors = (info) => ({
+    type: constants.EDITOR_CONTENT,
+    info: fromJS(info)
+});
+
 //热点搜索
 export const changeHotSearch = (hotList) => ({
     type:constants.HOT_SEARCH,
@@ -83,6 +89,7 @@ export const SearchEnter = () => ({
     type: constants.MOUSE_ENTER
 });
 
+// 热门搜索鼠标移出
 export const SearchLeave = () => ({
     type: constants.MOUSE_LEAVE
 });

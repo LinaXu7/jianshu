@@ -2,13 +2,13 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-09-11 14:31:31
- * @LastEditTime: 2019-09-18 16:13:02
+ * @LastEditTime: 2019-09-24 10:52:08
  * @LastEditors: Please set LastEditors
  */
 import React, { Component } from 'react';
 import { Search, SearchItem, SearchInfo, SearchTitle } from '../style';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import { hotSearch, changHot } from '../../../request/api';
 import * as actionCreators from '../../../store/actionCreators';
 
 class SearchCard extends Component {
@@ -32,13 +32,12 @@ class SearchCard extends Component {
                         list.map((item) => {
                             return (
                                 <SearchInfo key={item.get('id')}>
-                                    <a className="hot_item">{item.get('hotName')}</a>
+                                    <a href='#' className="hot_item">{item.get('hotName')}</a>
                                 </SearchInfo>
                             )
                         })
                     }
                 </SearchItem>
-                
             </Search>    
         )
     }
@@ -54,13 +53,13 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
     getHotList() {
-        axios.get('/api/hotSearch.json').then((res) => {
+        hotSearch().then((res) => {
             const reslut = res.data.data;
             dispatch(actionCreators.changeHotSearch(reslut));
         });
     },
     changeHot(page) {
-        axios.get('/api/changeHot.json?page=' + page).then((res) => {
+        changHot(page).then((res) => {
             const reslut = res.data.data;
             dispatch(actionCreators.moreHotSearch(reslut, page + 1));
         });

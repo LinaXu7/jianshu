@@ -18,3 +18,4 @@ export const CHANGE_DETAIL = 'detail/CHANGE_DETAIL';
 export const CHANGE_LOGIN = 'login/CHANGE_LOGIN'; 
 export const LOGOUT = 'login/LOGOUT';
 export const WRITE_LIST = 'write/WRITE_LIST';
+export const EDITOR_CONTENT = 'EDITOR_CONTENT';

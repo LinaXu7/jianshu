@@ -1,10 +1,11 @@
 /*
  * @Description: In User Settings Edit
- * @Author: Lina
+ * @Author: your name
  * @Date: 2019-06-25 15:32:37
- * @LastEditTime: 2019-09-18 16:11:54
+ * @LastEditTime: 2019-09-18 17:37:46
  * @LastEditors: Please set LastEditors
  */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';

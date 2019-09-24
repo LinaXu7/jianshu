@@ -21,6 +21,7 @@ const defaultState = fromJS({
     title: '',
     content: '',
     writeList: [],           //写文章下面的列表
+    editContent: '',
     hotList: [],             //热门搜索列表
     hotPage: 1,
     isEnter: false
@@ -90,6 +91,8 @@ const write = (state = defaultState, action) => {
     switch(action.type) {
         case constants.WRITE_LIST: 
           return state.set('writeList', action.list);
+        case constants.EDITOR_CONTENT:
+            return state.set('editContent', action.info);
         default:
           return state;
     }

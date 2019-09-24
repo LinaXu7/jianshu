@@ -2,15 +2,15 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-28 14:23:28
- * @LastEditTime: 2019-08-28 14:23:28
- * @LastEditors: your name
+ * @LastEditTime: 2019-09-23 11:28:41
+ * @LastEditors: Please set LastEditors
  */
 import React, { Component } from 'react';
 import { LoginWrapper, LoginBox, Input, Button } from './style';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as actionCreators   from '../../store/actionCreators';
-import axios from 'axios';
+import { userLoginStatus } from '../../request/api';
 
 class Login extends Component {
     render() {
@@ -37,9 +37,11 @@ const mapState = (state) => ({
 
 const mapDispathToProps = (dispatch) => ({
     login(accountElem, passwordElem) {
-        const account = accountElem.value;
-        const password = passwordElem.value;
-        axios.get('/api/login.json?account=' + account + '&password=' + password).then((res) => {
+        const params = {
+            account: accountElem.value,
+            password: passwordElem.value
+        }
+        userLoginStatus(params).then((res) => {
             const result = res.data.data;
             if (result) {
                dispatch(actionCreators.changeLogin());
