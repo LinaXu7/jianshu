@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import { ListInfo, ListItem, LoadMore } from '../style';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { moreList } from '../../../request/api';
 import * as actionCreators from '../../../store/actionCreators';
 
 class List extends Component {
@@ -45,7 +45,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
     getMoreList(page) {
-        axios.get('/api/moreList.json?page=' + page).then((res) => {
+        moreList(page).then((res) => {
             const reslut = res.data;
             dispatch(actionCreators.moreList(reslut.articleList, page + 1));
         })

@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-08-30 14:48:21
- * @LastEditTime: 2019-09-19 17:51:30
+ * @LastEditTime: 2019-09-24 11:11:48
  * @LastEditors: Please set LastEditors
  */
 import React, { Component } from 'react';
@@ -23,7 +23,7 @@ import {
 	WriteRight
 } from './style';
 import * as actionCreators   from '../../store/actionCreators';
-import axios from 'axios';
+import { writeArticleList } from '../../request/api';
 
 class Write extends Component {
 	mdParser = null
@@ -94,7 +94,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
 	ArList() {
-		axios.get('/api/articleList.json').then((res) => {
+		writeArticleList().then((res) => {
 			const reslut = res.data.list;
 			dispatch(actionCreators.changeWriteList(reslut));
 		});

@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actionCreators from '../../store/actionCreators';
-import axios from 'axios';
+import { home } from '../../request/api';
 import Topic from './componets/Topic';
 import List from './componets/List';
 import Recommd from './componets/Recommd';
@@ -59,7 +59,7 @@ const mapState = (state) => ({
 
 const mapDispatch = (dispatch) => ({
 	changeHomeData() {
-		axios.get('/api/home.json').then((res) => {
+		home().then((res) => {
 			const result = res.data;
 			dispatch(actionCreators.changeHomeData(result.topicList, result.articleList, result.recommendList, result.writerList));
 		})
